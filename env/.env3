@@ -1,0 +1,10 @@
+//Definimos las variables de entorno para la conexion a la BD railway
+//mysql -hcontainers-us-west-108.railway.app -uroot -pm8bhtKg1pN0gxbcBRgcD --port 5966 --protocol=TCP railway
+
+DB_HOST = containers-us-west-108.railway.app
+DB_USER = root
+DB_PASS = m8bhtKg1pN0gxbcBRgcD
+DB_DATABASE = railway
+DB_PORT = 5966
+DB_PROTOCOL = TCP 
+
