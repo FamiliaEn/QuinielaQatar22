@@ -2,10 +2,8 @@
 const express = require('express');
 const app = express();
 
-
 global.globalfolder = 0;
-console.log(globalfolder); // Output: "This can be accessed anywhere!"
-
+//console.log(globalfolder); // Output: "This can be accessed anywhere!"
 
 //2 - Para poder capturar los datos del formulario (sin urlencoded nos devuelve "undefined")
 app.use(express.urlencoded({extended:false}));
