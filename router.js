@@ -237,24 +237,11 @@ router.get('/participantes_dat2', (req, res)=>{
 //ruta para enviar los datos en formato json
 
 router.get('/participantes_datF1', (req, res)=>{ 
-        
-
-//    conexion.query('SELECT * FROM participantes where 1=2',(error, results)=>{
-//        if(error){
-//            console.log(error);
-//        } else {                                                   
-//            datap = JSON.stringify(results);
-//            res.send(datap);          
-//        }   
-//    })
-
-const folder = 1;
-
-console.log('Folder1 ',folder);
-
-pool.query('SELECT L.Lugar Lugar, P.Alias Alias, P.Puntos Puntos FROM lugar L, participantes P where L.Id_participante = P.Id_participante and L.Id_folder=?',[folder] ,(error, results)=>{
-
-        if(error){
+       
+    console.log('Folder ',globalfolder);
+ 
+    pool.query('SELECT L.Lugar Lugar, P.Alias Alias, P.Puntos Puntos FROM lugar L, participantes P where L.Id_participante = P.Id_participante and L.Id_folder=?',[globalfolder] ,(error, results)=>{
+         if(error){
             console.log(error);
             console.error(err);
             return;
@@ -266,25 +253,6 @@ pool.query('SELECT L.Lugar Lugar, P.Alias Alias, P.Puntos Puntos FROM lugar L, p
 
 });
 
-router.get('/participantes_datF2', (req, res)=>{ 
-       
-    const folder = 2;
-
-    //console.log('Folder ',req.session.folder);
-    //console.log('Folder1 ',folder);
- 
-    pool.query('SELECT L.Lugar Lugar, P.Alias Alias, P.Puntos Puntos FROM lugar L, participantes P where L.Id_participante = P.Id_participante and L.Id_folder=?',[folder] ,(error, results)=>{
-            if(error){
-                console.log(error);
-                console.error(err);
-                return;
-            } else {                                                   
-                datap = JSON.stringify(results);
-                res.send(datap);          
-            }   
-        })
-    
-    });
     
 //RUTA PARA EDITAR UN REGISTRO SELECCIONADO
 router.get('/participante_edit/:Id', (req,res)=>{    

@@ -2,6 +2,11 @@
 const express = require('express');
 const app = express();
 
+
+global.globalfolder = 0;
+console.log(globalfolder); // Output: "This can be accessed anywhere!"
+
+
 //2 - Para poder capturar los datos del formulario (sin urlencoded nos devuelve "undefined")
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());//además le decimos a express que vamos a usar json
@@ -362,6 +367,11 @@ app.get('/', (req, res)=> {
 });
 
 app.get('/famL', (req, res)=> {
+
+	
+	globalfolder = 1;
+    //console.log(globalfolder); 
+
 	if (req.session.loggedin) {
 		res.render('famL',{
 			login: true,
@@ -379,11 +389,14 @@ app.get('/famL', (req, res)=> {
 });
 
 app.get('/garcia', (req, res)=> {
+
+	globalfolder = 2;
+    //console.log(globalfolder); 
+
 	if (req.session.loggedin) {
 		res.render('garcia',{
 			login: true,
-			name: req.session.name,
-			folder: 2			
+			name: req.session.name,			
 		});		
 	} else {
 		res.render('garcia',{
