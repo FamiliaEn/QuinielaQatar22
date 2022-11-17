@@ -37,10 +37,9 @@ const connection = require('./database/db');
 
 //9 SMS
 const accountSid = 'ACc43d61220600a796f192dac6d4376997' // El id de tu cuenta; 
-const authToken = '42e71495b67ba7c6a5ae4b4017653fb9' // El TOKEN de tu cuenta; 
+const authToken = 'e802fed893f43ea47a893fec0d2cf96c' // El TOKEN de tu cuenta; 
 const client = require('twilio')(accountSid, authToken); 
  
-
 //10 - establecemos las rutas
 	app.get('/acceso',(req, res)=>{
 		res.render('acceso');
@@ -350,13 +349,16 @@ app.post('/auth', async (req, res)=> {
 
 //12 - Método para controlar que está auth en todas las páginas
 app.get('/', (req, res)=> {
+
+	console.log('Folder Index ',globalfolder);
+
 	if (req.session.loggedin) {
-		res.render('index',{
+		res.render('resultados',{
 			login: true,
 			name: req.session.name			
 		});		
 	} else {
-		res.render('index',{
+		res.render('resultados',{
 			login:false,
 			name:'Debe iniciar sesión',			
 		});				 
@@ -371,13 +373,13 @@ app.get('/famL', (req, res)=> {
     //console.log(globalfolder); 
 
 	if (req.session.loggedin) {
-		res.render('famL',{
+		res.render('ranking',{
 			login: true,
 			name: req.session.name,
 			folder: 1			
 		});		
 	} else {
-		res.render('famL',{
+		res.render('ranking',{
 			login:false,
 			name:'Debe iniciar sesión',	
 			folder: 1		
@@ -390,19 +392,43 @@ app.get('/garcia', (req, res)=> {
 
 	globalfolder = 2;
     //console.log(globalfolder); 
+	console.log(req.session.loggedin);
 
 	if (req.session.loggedin) {
-		res.render('garcia',{
+		res.render('ranking',{
 			login: true,
 			name: req.session.name,			
 		});		
 	} else {
-		res.render('garcia',{
+		res.render('ranking',{
 			login:false,
 			name:'Debe iniciar sesión',	
 			folder: 2		
 		});				 
 	}
+	res.end();
+});
+
+
+app.get('/ranking', (req, res)=> {
+
+	console.log(globalfolder); 
+
+	if( globalfolder == 0  ) {  
+		console.log(globalfolder); 
+		res.render('resultados',{
+			login: true,
+			name: req.session.name,			
+		});	
+	} else {	
+		console.log(globalfolder); 
+		res.render('ranking',{
+			login: true,
+			name: req.session.name,			
+		});	
+	}
+
+
 	res.end();
 });
 

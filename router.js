@@ -21,7 +21,7 @@ const conexion = require('./database/db');
 router.get('/datap', (req, res)=>{     
 
 //	console.log('Debug partidos L ',req.session.loggedin);
-	console.log('Debug partidos A ',req.session.Alias);
+//	console.log('Debug partidos A ',req.session.Alias);
 
    
     conexion.query('SELECT P.Id,L.clave ClaveL,P.Local,P.ML,P.MV,P.Visitante,V.Clave ClaveV FROM partidos as P, paises as L, paises as V WHERE P.Visitante = V.nombre and P.Local = L.nombre',(error, results)=>{
@@ -42,7 +42,7 @@ router.get('/quiniela_data', (req, res)=>{
 
 //	console.log('Debug quiniela L ',req.session.loggedin);
 //    console.log('Debug quiniela Id ',req.session.Id_participante);
-    console.log('Debug quiniela 2 ',req.session.Alias);
+//    console.log('Debug quiniela 2 ',req.session.Alias);
 
 
     conexion.query('SELECT Q.Id,P.Id Id_P,L.clave ClaveL,P.Local,Q.ML,Q.MV,P.Visitante,V.Clave ClaveV,P.Fecha,P.Horario,P.Estadio,Q.Estatus Estatus FROM partidos as P, paises as L, paises as V, quiniela as Q WHERE P.Visitante = V.nombre and P.Local = L.nombre and P.Id = Q.Id_partido and Q.Id_participante=? order by Id_P',[Id_p],(error, results)=>{
@@ -61,7 +61,6 @@ router.get('/quinielas_data', (req, res)=>{
     const Id_p = req.session.Id_participante;
     console.log('Folder ',globalfolder);
  
-
 //	console.log('Debug quiniela L ',req.session.loggedin);
 //    console.log('Debug quiniela Id ',req.session.Id_participante);
 //    console.log('Debug quiniela A ',req.session.Alias);
