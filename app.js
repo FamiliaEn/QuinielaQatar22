@@ -8,7 +8,7 @@ global.globalfolder = 0;
 //2 - Para poder capturar los datos del formulario (sin urlencoded nos devuelve "undefined")
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());//además le decimos a express que vamos a usar json
-
+ 
 //3- Invocamos a dotenv
 const dotenv = require('dotenv');
 dotenv.config({ path: './env/.env'});
@@ -36,9 +36,9 @@ app.use(session({
 const connection = require('./database/db');
 
 //9 SMS
-const accountSid = 'ACc43d61220600a796f192dac6d4376997' // El id de tu cuenta; 
-const authToken = 'e802fed893f43ea47a893fec0d2cf96c' // El TOKEN de tu cuenta; 
-const client = require('twilio')(accountSid, authToken); 
+//const accountSid = 'ACc43d61220600a796f192dac6d4376997' // El id de tu cuenta; 
+//const authToken = 'e802fed893f43ea47a893fec0d2cf96c' // El TOKEN de tu cuenta; 
+//const client = require('twilio')(accountSid, authToken); 
  
 //10 - establecemos las rutas
 	app.get('/acceso',(req, res)=>{
@@ -159,14 +159,14 @@ app.post('/registra_save1', async (req, res)=> {
 						   
 	
 	//SMS
-	client.messages 
-	.create({
-	   body: Alias,  
-	   messagingServiceSid: 'MGd83ac9dc18fe0332e4081368d3800b61',      
-	   to: '524422029224' 
-	}) 
-	.then(message => console.log(`${Alias} - ${message.sid}`)) 
-	.done();
+//	client.messages 
+//	.create({
+//	   body: Alias,  
+//	   messagingServiceSid: 'MGd83ac9dc18fe0332e4081368d3800b61',      
+//	   to: '524422029224' 
+//	}) 
+//	.then(message => console.log(`${Alias} - ${message.sid}`)) 
+//	.done();
 	
 
 	console.log('Usuario registrado');
