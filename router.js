@@ -241,7 +241,7 @@ router.get('/participantes_datF1', (req, res)=>{
        
     console.log('Folder ',globalfolder);
  
-    pool.query('SELECT L.Lugar Lugar, P.Alias Alias, P.Puntos Puntos FROM lugar L, participantes P where L.Id_participante = P.Id_participante and L.Id_folder=?',[globalfolder] ,(error, results)=>{
+    pool.query('SELECT L.Lugar Lugar, P.Alias Alias, P.Puntos Puntos FROM lugar L, participantes P where L.Id_participante = P.Id_participante and L.Id_folder=? order by 1',[globalfolder] ,(error, results)=>{
          if(error){
             console.log(error);
             console.error(err);
